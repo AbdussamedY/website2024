@@ -74,10 +74,11 @@
             border-radius: 10px;
             border: 1px solid black;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-            transition: all 0.15s ease;
+            transition: box-shadow 0.15s ease;
         }
         .main .card:hover{
             box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.8);
+            cursor: pointer;
         }
 
         .main .card .photo{
@@ -92,7 +93,7 @@
         .main .card .photo img{
             height: 100%;
             object-fit: cover;
-            transition: all 1.5s ease;
+            transition: all 2s ease;
         }
         .main .card .filter{
             position: absolute;
@@ -103,15 +104,15 @@
         }
         .main .card .infos{
             position: absolute;
-            /* transform: translateY(0%); */
             bottom: 0;
             color: white;
             padding: 10px;
-            opacity: 1;
-            /* transition:  0.75s ease; */
+            opacity: 0;
+            transition: opacity 2s ease-out, transform 0.5s ease-out;
         }
         
         .main .card .infos .name{
+            position: relative;
             display: inline-block;
             transition: all 0.75s ease;
             font-size: 1.2em;
@@ -121,7 +122,7 @@
             content: '';
             position: absolute;
             width: 0;
-            height: 1px;
+            height: 1.25px;
             bottom: 0;
             left: 0;
             background-color: white;
@@ -178,50 +179,33 @@
             </div>
 
             <div class="members">
-                <div class="card">
-                    <div class="photo">
-                        <img src="images/abdussamed.jpeg" alt="">
+                <div class="group">
+                    <div class="card">
+                        <div class="photo">
+                            <img src="images/guy.jpeg" alt="">
+                        </div>
+                        <div class="filter"></div>
+                        <div class="infos">
+                            <div class="name">
+                                Guy Bouvier
+                            </div>
+                            <div class="status">
+                                Chargé de Recherche CNRS
+                            </div>
+                            <div class="description">
+                                Guy has always been fascinated by how brain circuits enable us to build stable yet adaptable representations of our environment, from receptors, synapses, and circuits to behaviors. This fundamental process involves integrating diverse types of information through microcircuits and long-range connections and is central to key brain functions such as perception and cognition, making it a major challenge in neuroscience. More specifically, Guy has always been fascinated by our capacity to continuously update our representation of the world by combining internal senses, which use muscles and head motion sensors to locate our body in space, and external senses, such as vision, touch, or audition to explore our environment. 
+                                During his doctoral thesis, Guy worked with Boris Barbour and Mariano Casado at IBENS, Paris, to investigate synaptic plasticity rules and their impact on motor learning, focusing on the parallel fibre-Purkinje cell synapse in the cerebellum. After earning his PhD, he joined Massimo Scanziani's laboratory at the University of California, San Francisco/HHMI, where he explored how the vestibulo-cerebellar circuits modulate the activity of the primary visual cortex in mice.
+                                In September 2023, Guy established the SensoMotion Lab at the Neuroscience Institute of Paris-Saclay, with support from the European Research Council. His lab aims to unravel how our own motion impacts sensory processing and, ultimately, our internal model of the world.
+                            </div>
+                        </div>
                     </div>
-                    <div class="filter"></div>
-                    <div class="infos">
-                        <div class="name">
-                            Abdussamed Yazici
-                        </div>
-                        <div class="status">
-                            PhD Student
-                        </div>
-                        <!-- <div class="description">
-                        Guy has always been fascinated by how brain circuits enable us to build stable yet adaptable representations of our environment, from receptors, synapses, and circuits to behaviors. This fundamental process involves integrating diverse types of information through microcircuits and long-range connections and is central to key brain functions such as perception and cognition, making it a major challenge in neuroscience. More specifically, Guy has always been fascinated by our capacity to continuously update our representation of the world by combining internal senses, which use muscles and head motion sensors to locate our body in space, and external senses, such as vision, touch, or audition to explore our environment. 
-During his doctoral thesis, Guy worked with Boris Barbour and Mariano Casado at IBENS, Paris, to investigate synaptic plasticity rules and their impact on motor learning, focusing on the parallel fibre-Purkinje cell synapse in the cerebellum. After earning his PhD, he joined Massimo Scanziani's laboratory at the University of California, San Francisco/HHMI, where he explored how the vestibulo-cerebellar circuits modulate the activity of the primary visual cortex in mice.
-In September 2023, Guy established the SensoMotion Lab at the Neuroscience Institute of Paris-Saclay, with support from the European Research Council. His lab aims to unravel how our own motion impacts sensory processing and, ultimately, our internal model of the world.
- 
 
-                        </div> -->
-                    </div>
+                    <?php include "members/guy_bouvier.php" ?>
                 </div>
 
                 <div class="card">
                     <div class="photo">
-                        <img src="images/abdussamed.jpeg" alt="">
-                    </div>
-                    <div class="filter"></div>
-                    <div class="infos">
-                        <div class="name">
-                            Abdussamed Yazici
-                        </div>
-                        <div class="status">
-                            PhD Student
-                        </div>
-                        <div class="description">
-                        Guy has always been fascinated by 
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="photo">
-                        <img src="images/abdussamed.jpeg" alt="">
+                        <img src="images/guy.jpeg" alt="">
                     </div>
                     <div class="filter"></div>
                     <div class="infos">
@@ -240,7 +224,7 @@ In September 2023, Guy established the SensoMotion Lab at the Neuroscience Insti
 
                 <div class="card">
                     <div class="photo">
-                        <img src="images/abdussamed.jpeg" alt="">
+                        <img src="images/guy.jpeg" alt="">
                     </div>
                     <div class="filter"></div>
                     <div class="infos">
@@ -259,7 +243,7 @@ In September 2023, Guy established the SensoMotion Lab at the Neuroscience Insti
 
                 <div class="card">
                     <div class="photo">
-                        <img src="images/abdussamed.jpeg" alt="">
+                        <img src="images/guy.jpeg" alt="">
                     </div>
                     <div class="filter"></div>
                     <div class="infos">
@@ -278,7 +262,7 @@ In September 2023, Guy established the SensoMotion Lab at the Neuroscience Insti
 
                 <div class="card">
                     <div class="photo">
-                        <img src="images/abdussamed.jpeg" alt="">
+                        <img src="images/guy.jpeg" alt="">
                     </div>
                     <div class="filter"></div>
                     <div class="infos">
@@ -297,7 +281,26 @@ In September 2023, Guy established the SensoMotion Lab at the Neuroscience Insti
 
                 <div class="card">
                     <div class="photo">
-                        <img src="images/abdussamed.jpeg" alt="">
+                        <img src="images/guy.jpeg" alt="">
+                    </div>
+                    <div class="filter"></div>
+                    <div class="infos">
+                        <div class="name">
+                            Abdussamed Yazici
+                        </div>
+                        <div class="status">
+                            PhD Student
+                        </div>
+                        <div class="description">
+                        Guy has always been fascinated by 
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="photo">
+                        <img src="images/guy.jpeg" alt="">
                     </div>
                     <div class="filter"></div>
                     <div class="infos">
@@ -319,21 +322,55 @@ In September 2023, Guy established the SensoMotion Lab at the Neuroscience Insti
     </div>
 
     <script src="js/basic-functions.js"></script>
-    <!-- <script>
+    <script>
         window.onload = function() {
-            const parents = document.querySelectorAll('.infos'); // Sélectionner tous les éléments parents
+            const cards = document.querySelectorAll('.card'); // Sélectionner tous les éléments ".card"
 
-            parents.forEach(parent => {
-                const thirdChild = parent.querySelector('.description'); // Sélectionner le 3ème enfant de chaque parent
+            cards.forEach(card => {
+                const parent = card.querySelector('.infos'); // Sélectionner l'élément ".infos" à l'intérieur de chaque ".card"
+                const thirdChild = parent.querySelector('.description'); // Sélectionner l'élément ".description"
                 const thirdChildHeight = thirdChild.offsetHeight;
-                
-                // Appliquer la translation Y à chaque élément parent
                 parent.style.transform = `translateY(${thirdChildHeight}px)`;
 
-                parent.style.opacity = 1;
+                // Appliquer la translation Y au survol de chaque carte
+                card.addEventListener('mouseover', () => {
+                    parent.style.transform = `translateY(0)`;
+                });
+
+                card.addEventListener('mouseout', () => {
+                    parent.style.transform = `translateY(${thirdChildHeight}px)`;
+                });
+                setTimeout(() => {
+                    parent.style.opacity = 1; // Rendre l'élément parent visible                    
+                }, 500);
             });
         };
 
-    </script> -->
+
+
+
+
+
+
+
+
+
+        const memberGroups = document.querySelectorAll('.group');
+
+        memberGroups.forEach(memberGroup => {
+            const memberPage = memberGroup.querySelector('.member-page');
+
+            const hideBtn = memberPage.querySelector('.hideBtn');
+
+            memberGroup.addEventListener('click', function() {
+                memberPage.classList.add('active');
+            });
+
+            hideBtn.addEventListener('click', function(event) {
+                memberPage.classList.remove('active');
+                event.stopPropagation();
+            });
+        });
+    </script>
 </body>
 </html>

@@ -1,101 +1,87 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/website/common/header.php';?>
+<style>
+  .member-page {
+    position: fixed;
+    top: 0;
+    left: 210px;
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    width: calc(100% - 210px);
+    padding: 10px;
+    background-color: #f0f0f0;
+    box-sizing: border-box;
+    transform: translateX(100%);
+    z-index: 1000;
+    transition: transform 0.75s ease-in-out;
+  }
+  .member-page.active {
+    transform: translateX(0);
+  }
+  .member-page .hideBtn {
+    /* position: absolute; */
+    /* top: 10px; */
+    /* left: 10px; */
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    font-size: 1.25em;
+  }
+  .member-page .photo img{
+    width: 100%;
+    height: auto;
     
-    <link rel="stylesheet" href="/website/css/member-info.css">
+  }
 
-    <main>
-        <img src="/website/images/members/guy.jpeg" alt="">
+  .navbar.active~.member-page {
+    left: 80px;
+    width: calc(100% - 80px);
+    background-color: red;
+  }
+</style>
+<body>
+  <div class="member-page">
+    <div class="hideBtn"><i class="bi bi-arrow-bar-right"></i> Back</div>
 
-        <div class="name">
-            Guy Bouvier
-        </div>
-        <div class="position">
-            Principal Investigator
-        </div>
 
-        <div class="contact">
-          <div class="parent">
+    <div class="photo">
+      <img src="images/members/guy-bouvier.jpeg" alt="Guy Bouvier">
+    </div>
+  </div>
 
-            <div class="child-animation">
-              <div class="child child-twitter">
-                <a class="button btn-twitter" href="https://x.com/guy_bouvier" target="_blank">
-                  <svg viewBox="0 0 512 512" height="20px" xmlns="http://www.w3.org/2000/svg" class="svgIcontwit" fill="black"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path></svg>
-                </a>
-              </div>
-              <div class="user">Guy Bouvier</div>
-            </div>
+
+
+
+
+
+
+
+  <!-- <script>
+        const developBtn = document.querySelector('.group');
+        const hideBtn = document.querySelector('.hideBtn');
+
+
+        const memberPage = document.querySelector('.child');
+
+        // Ajouter un écouteur d'événements sur l'élément fils
+        child.addEventListener('click', function() {
+            // Sélectionner l'élément parent du fils
+            const parent = child.closest('.parent'); // Récupérer le parent direct
+
+            // Ajouter une classe au parent
+            parent.classList.add('highlight-parent');
+        });
+
+
+
+
+        developBtn.addEventListener('click', function() {
+            const memberPage = developBtn.querySelector('.member-page');
             
+            memberPage.classList.add('active');
+        });
 
-            <div class="child-animation">
-              <div class="child child-linkedin">
-                  <a class="button btn-linkedin" href="https://www.linkedin.com/in/guy-bouvier-94167b59/" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="rgb(45,100,188)"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                  </a>
-              </div>
-              <div class="user">Guy Bouvier</div>
-            </div>
-            
-            <div class="child-animation">
-              <div class="child child-github">
-                <a class="button btn-github" href="https://github.com/gbouvier" target="_blank">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
-                </a>
-              </div>
-              <div class="user">gbouvier</div>
-            </div>
-            
-
-            <div class="child-animation">
-              <div class="child child-gmail">
-                <a class="button btn-gmail" href="mailto:bouvier.ga@gmail.com" target="_blank">
-                  <svg height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="52 42 88 66"><path fill="#4285f4" d="M58 108h14V74L52 59v43c0 3.32 2.69 6 6 6"/><path fill="#34a853" d="M120 108h14c3.32 0 6-2.69 6-6V59l-20 15"/><path fill="#fbbc04" d="M120 48v26l20-15v-8c0-7.42-8.47-11.65-14.4-7.2"/><path fill="#ea4335" d="M72 74V48l24 18 24-18v26L96 92"/><path fill="#c5221f" d="M52 51v8l20 15V48l-5.6-4.2c-5.94-4.45-14.4-.22-14.4 7.2"/></svg>
-                </a>
-              </div>
-              <div class="user">bouvier.ga@gmail.com</div>
-            </div>
-            
-
-            <div class="child-animation">
-              <div class="child child-cnrs">
-                <a class="button btn-cnrs" href="mailto:guy.bouvier@cnrs.fr" target="_blank">
-                  <svg width="20px" height="20px" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg"><g inkscape:label="Calque 1" inkscape:groupmode="layer" id="layer1" transform="translate(-167.01787,-53.368937)"><g id="g21"><path class="st0" d="m 174.02934,53.395398 c -0.13229,-0.02646 -0.26459,-0.02646 -0.39688,-0.02646 -1.79916,0 -3.43958,0.767292 -4.86833,2.301875 -1.32292,1.375833 -1.74625,2.513542 -1.74625,3.862917 0,0.714375 0.13229,1.508125 0.3175,2.434166 0.34396,1.74625 1.40229,3.439584 2.8575,4.656667 1.11125,0.926041 2.35479,1.375833 3.67771,1.402291 0.68791,0 1.37583,-0.105833 2.09021,-0.370416 2.27541,-0.79375 4.47145,-3.042708 5.31812,-5.476875 0.26458,-0.767292 0.39688,-1.534583 0.39688,-2.248958 0,-1.74625 -0.79375,-3.280834 -2.32834,-4.365625 -1.87854,-1.349375 -3.65125,-2.090209 -5.31812,-2.169584 z" id="path1" style="fill:#00294b;fill-opacity:1;stroke-width:0.264583" /><g id="g5" transform="matrix(0.26458333,0,0,0.26458333,167.01788,53.36894)"><path class="st1" d="m 16.6,27.7 h -1.9 v 0.1 c 0,0.4 -0.2,3.6 -3.1,3.6 -2.6,0 -3.9,-2.3 -3.9,-6.9 0,-4.6 1.3,-6.9 3.9,-6.9 2.9,0 3.1,3.4 3.1,3.6 v 0.1 h 1.9 c 0.2,0 0.4,-0.1 0.5,-0.2 0.1,-0.1 0.2,-0.3 0.2,-0.4 0,-0.9 -0.5,-5.4 -5.7,-5.4 -4.2,0 -6.4,3.2 -6.4,9.2 0,6 2.2,9.2 6.4,9.2 5,0 5.6,-4.1 5.7,-5.3 0,-0.2 -0.1,-0.3 -0.2,-0.5 -0.1,-0.1 -0.3,-0.2 -0.5,-0.2 z" id="path2" /><path class="st1" d="m 46.1,23.4 v 0 l -1.6,-0.7 c -1.6,-0.7 -2.1,-1.4 -2.1,-2.6 0,-1.6 1.1,-2.6 2.9,-2.6 1,0 1.8,0.2 2.8,1.2 L 48.2,18.8 49,18 c 0.5,-0.5 0.4,-0.9 0.1,-1.2 -0.8,-1 -2.2,-1.6 -3.9,-1.6 -3.1,0 -5.4,2.1 -5.4,4.9 0,2.8 1.7,3.9 3.6,4.8 l 1.7,0.7 c 1.7,0.7 2.5,1.4 2.5,3 0,2.2 -2,2.8 -3.2,2.8 -1,0 -2.1,-0.2 -3.5,-1.8 L 40.8,29.5 40,30.4 c -0.5,0.4 -0.5,0.8 0,1.3 1.3,1.6 3.1,1.9 4.4,1.9 2.8,0 5.7,-1.7 5.7,-5.1 0,-2.8 -1.6,-4.1 -4,-5.1 z" id="path3" /><path class="st1" d="m 30,20.6 c 0,-2.8 -2.3,-5.2 -5.2,-5.2 -1.3,0 -2.6,0.5 -3.5,1.3 v -1 h -1.7 c -0.5,0 -0.7,0.3 -0.7,0.7 V 33 c 0,0.5 0.3,0.7 0.7,0.7 h 1.7 v -13 c 0,-1.7 1.4,-3.1 3.1,-3.1 1.7,0 3.1,1.4 3.1,3.1 v 13.1 h 1.7 c 0.5,0 0.7,-0.3 0.7,-0.7 C 30,33 30,20.6 30,20.6 Z" id="path4" /><path class="st1" d="m 39.8,16.5 c 0.1,-0.1 0.1,-0.2 0.1,-0.4 0,-0.3 -0.2,-0.5 -0.4,-0.6 -0.5,-0.2 -1,-0.2 -1.6,-0.2 -1.3,0 -2.6,0.5 -3.5,1.3 v -1 h -1.7 c -0.5,0 -0.7,0.3 -0.7,0.7 V 33 c 0,0.5 0.3,0.7 0.7,0.7 h 1.7 V 20.6 c 0,-1.7 1.4,-3.1 3.1,-3.1 0.4,0 0.9,0.1 1.3,0.3 z" id="path5" /></g></g></g><style type="text/css" id="style1">.st0{fill:#00294B;}.st1{fill:#FFFFFF;}</style><style type="text/css"id="style1-0">.st0{fill:#62003C;}</style></svg>
-                </a>
-              </div>
-              <div class="user">guy.bouvier@cnrs.fr</div>
-            </div>
-
-            <div class="child-animation">
-              <div class="child child-scholar">
-                <a class="button btn-scholar" href="https://scholar.google.com/citations?user=IdMatQoAAAAJ&hl=fr" target="_blank">
-                  <svg width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#4285f4" d="M256 411.12L0 202.667 256 0z"/><path fill="#356ac3" d="M256 411.12l256-208.453L256 0z"/><circle fill="#a0c3ff" cx="256" cy="362.667" r="149.333"/><path fill="#76a7fa" d="M121.037 298.667c23.968-50.453 75.392-85.334 134.963-85.334s110.995 34.881 134.963 85.334H121.037z"/></svg>
-                </a>
-              </div>
-              <div class="user">Guy Bouvier</div>
-            </div>
-            
-
-          </div>
-        </div>
-        
-        
-
-
-
-
-
-
-
-
-        <div class="description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque commodo quis mauris ut iaculis. Quisque feugiat ex ac eros tincidunt gravida. Integer elementum diam metus, non venenatis nunc ullamcorper in. Proin sit amet orci sit amet tellus ultrices convallis non non eros. Nulla condimentum at urna sed iaculis. Nullam at sem neque. Phasellus sagittis, diam in sodales gravida, lacus purus tempor leo, id mollis diam ligula eget nisi. Nunc elementum tincidunt orci vel pellentesque. Pellentesque nulla erat, congue quis bibendum sit amet, venenatis non lectus. Sed sollicitudin ex venenatis egestas venenatis. Nam sagittis est justo, eget elementum velit placerat sed.
-        </div>
-
-    </main>
-
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/website/common/footer.php';?>
-
-
-
-
+    </script> -->
+</body>
 
 
 <!-- twitter old :
