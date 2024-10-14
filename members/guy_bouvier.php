@@ -12,7 +12,7 @@
     box-sizing: border-box;
     transform: translateX(100%);
     z-index: 1000;
-    transition: transform 0.75s ease-in-out;
+    transition: transform 0.75s ease-in-out, width 0.5s ease-in-out, left 0.5s ease-in-out;
   }
   .member-page.active {
     transform: translateX(0);
@@ -26,16 +26,34 @@
     cursor: pointer;
     font-size: 1.25em;
   }
+  .member-page .photo {
+    position: relative;
+  }
   .member-page .photo img{
-    width: 100%;
-    height: auto;
-    
+    position: absolute;
+    margin: auto;
+    width: 250px;
+    height: 300px;
+    object-fit: cover;
+    transition: all 0.75s ease;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid #000;
+    opacity: 1;
+  }
+  .member-page .photo img.funny {
+    opacity: 0;
+  }
+  .member-page .photo:hover .img{
+    opacity: 0;
+  }
+  .member-page .photo:hover .funny{
+    opacity: 1;
   }
 
-  .navbar.active~.member-page {
-    left: 80px;
-    width: calc(100% - 80px);
-    background-color: red;
+  .navbar.active~.main .member-page {
+    left: 70px;
+    width: calc(100% - 70px);
   }
 </style>
 <body>
@@ -45,6 +63,7 @@
 
     <div class="photo">
       <img src="images/members/guy-bouvier.jpeg" alt="Guy Bouvier">
+      <img src="images/elon_musk.jpg" class="funny">
     </div>
   </div>
 
